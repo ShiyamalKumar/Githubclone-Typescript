@@ -1,0 +1,93 @@
+/* ListingPage.css */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 2rem;
+    background-color: #ffffff;
+background-image: linear-gradient(215deg, #ffffff 0%, #274060 74%);
+height: auto;
+  }
+  
+  .repo-card {
+    width: calc(33.33% - 20px); /* 33.33% width for each card with spacing */
+    margin-bottom: 20px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #415A77;
+    color: aliceblue;
+    transition: transform 0.2s;
+    text-align: left;
+    padding-bottom: 2rem;
+  }
+  
+  .repo-card:hover {
+    transform: translateY(-5px);
+  }
+.stars-repo
+{
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 10px;
+}
+.language-box
+{
+    background-color: aliceblue;
+    color: black;
+    width: 20%;
+    text-align: center;
+    padding: 0.5rem;
+    margin-left: 10px;
+    border-radius:20px;
+}
+.repo-card a
+{
+    text-decoration: none !important;
+}
+h3
+{
+    margin-left: 15px;
+    color: aliceblue;
+    text-decoration: none;
+    margin-left: 15px;
+    
+}  
+p
+{
+    margin-left: 15px;
+}
+
+.language-javascript
+{
+    color: rgb(192, 11, 11);
+}
+
+.language-typescript
+{
+    color: rgb(180, 13, 144);
+}
+
+.language-shell
+{
+    color: rgb(222, 188, 18);
+}
+
+.language-html
+{
+    color: rgb(14, 16, 166);
+}
+
+.language-dockerfile
+{
+    color: rgb(117, 13, 155);
+}
+.language-cpp
+{
+    color: rgb(13, 172, 66);
+}
+.language-na
+{
+    color: rgb(72, 68, 68);
+}

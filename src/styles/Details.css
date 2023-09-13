@@ -1,0 +1,95 @@
+.container {
+    padding: 2rem;
+    background-color: transparent;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: auto;
+ 
+  }
+  
+  .top-cont {
+    text-align: left;
+  }
+  
+  .extracont {
+    background-color: #293241;
+    padding: 2rem;
+    border-radius: 5px;
+    text-align: left;
+    padding-bottom: 3rem;
+    width: 80%;
+    max-width: 800px; 
+  }
+  
+  .extracont a {
+    padding: 0.7rem;
+    border: thick double #bed4dc;
+    color: #fbfbfb;
+    border-radius: 1rem;
+    text-align: left;
+    text-decoration: none;
+    display: block;
+    margin-top: 1rem;
+  }
+  h1
+  {
+    text-align: left;
+    padding-left: 24px;
+    color: aliceblue;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 1rem;
+    color: aliceblue;
+  }
+  
+  h3 {
+    font-size: 20px;
+    margin-bottom: 0.5rem;
+    color: antiquewhite;
+  }
+  
+  p {
+    font-size: 16px;
+    margin-bottom: 1rem;
+    color: aliceblue;
+  }
+  
+  .readme-cont {
+    font-size: 18px;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    border-radius: 20px;
+    color: #293241;
+    text-align: center;
+    background-color: aliceblue;
+    padding: 20px;
+  }
+  
+  .github-link {
+    font-size: 18px;
+    text-decoration: none;
+    color: #0366d6;
+    transition: color 0.3s;
+  }
+  
+  .github-link:hover {
+    color: #0554cc;
+  }
+
+  .owner-details
+  {
+    text-align: left;
+    padding-left:24px ;
+  }
+
+  .repo-details a
+  {
+    padding: 0.7rem;
+    border: thick double #bed4dc;
+    color: #FBFBFB;
+    border-radius: 1rem;
+    text-align: center;
+    text-decoration: none !important;
+  }
+  
