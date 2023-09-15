@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './Navbar';
 import ListingPage from './ListingPage';
 import Details from './Details';
+import Dashboard from './Dashboard';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<ListingPage />} />
           <Route path="/details/:repoId" element={<Details />} />
+          {/* <Route path="/" element={<Dashboard />} /> */}
         </Routes>
       </Router>
     </div>

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ReactMarkdown from "react-markdown";
 
 const Readme = ({ username, repoName }) => {
     const [readmeContent, setReadmeContent] = useState("");
-
+    console.log(readmeContent);
     useEffect(() => {
         // Fetch README content
         axios
@@ -17,9 +18,9 @@ const Readme = ({ username, repoName }) => {
     }, [username, repoName]);
 
     return (
-        <div>
+        <div className="shiyamal">
             <h4>README</h4>
-            <div dangerouslySetInnerHTML={{ __html: readmeContent }}></div>
+            <ReactMarkdown>{readmeContent}</ReactMarkdown>
         </div>
     );
 };

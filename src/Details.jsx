@@ -5,6 +5,7 @@ import Readme from './Readme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 import '../src/styles/Details.css';
+import ReactMarkdown from 'react-markdown'
 
 const Details = () => {
     const { repoId } = useParams();
@@ -32,7 +33,7 @@ const Details = () => {
         : 'Not specified';
 
     return (
-        <div className="container">
+        <div className="det-container">
             <div className='extra-cont'>
                 <h1>Repository Details</h1>
                 <div className="repo-details">
@@ -53,9 +54,11 @@ const Details = () => {
                     <div className='readme-cont'>
                         <Readme username={repoDetails.owner.login} repoName={repoDetails.name} />
                     </div>
-                    <a href={repoDetails.html_url} target="_blank" rel="noopener noreferrer">
-                        View on GitHub
-                    </a>
+                    <div style={{ width: "100%", textAlign: "center" }}>
+                        <a className="viewGit" href={repoDetails.html_url} target="_blank" rel="noopener noreferrer">
+                            View on GitHub
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
