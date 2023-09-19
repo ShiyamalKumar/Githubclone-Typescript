@@ -1,26 +1,35 @@
 
 .dashboard-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: rgb(109, 106, 106);
+
+      margin: 0 auto;
+
+      background-color: #274060;
+      padding-bottom: 10%;
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: column;
+      align-items: center; 
   }
   
   .dashboard-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
+    margin-top: 0px;
+    padding-top: 20px;
   }
   
   .dashboard-section {
-    background-color: #fff;
+    background-color: #415A77;
     border-radius: 4px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
     padding: 20px;
     margin-bottom: 20px;
+    width: 50%;
   }
   
   .dashboard-section h2 {
+    color: aliceblue;
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -34,10 +43,24 @@
   
   .dashboard-section ul li {
     font-size: 16px;
-    color: #333;
+    color: aliceblue;
     margin-bottom: 10px;
   }
-  
+  .dashboard-section a
+  {
+    color: aliceblue;
+  }
+  .dashboard-container button
+  {
+    padding: 0.7rem;
+    border: thick double #bed4dc;
+    color: #FBFBFB;
+    background-color: transparent;
+    border-radius: 1rem;
+    text-align: center;
+    text-decoration: none !important;
+    margin: auto;
+  }
  
   @media (max-width: 768px) {
     .dashboard-section {

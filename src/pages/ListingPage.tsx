@@ -1,15 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchRepositories } from './redux/actions';
-import '../src/styles/ListingPage.css';
+import React, { Dispatch, useEffect, useState } from 'react';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { fetchRepositories } from '../redux/actions';
+import '../styles/ListingPage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Ping } from '@uiball/loaders';
+import { RootState } from '../redux/store';
 
-
-
-
-const getLanguageClass = (language) => {
+const getLanguageClass = (language: string | null) => {
     switch (language) {
         case "JavaScript":
             return "language-javascript";
@@ -23,35 +22,31 @@ const getLanguageClass = (language) => {
             return "language-dockerfile";
         case "C++":
             return "language-cpp";
-
         default:
             return "language-na";
     }
 };
 
-const ListingPage = () => {
-    const dispatch = useDispatch();
-    const { repositories, error } = useSelector((state) => state.repositories);
-
-    // State variable to track dark mode
+const ListingPage: React.FC = () => {
+    // const useAppDispatch: () => AppDispatch = useDispatch
+    const dispatch: Dispatch<any> = useDispatch();
+    const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+    const { repositories, error, user } = useAppSelector((state: any) => state);
     const [isDarkMode, setIsDarkMode] = useState(false);
 
+
     useEffect(() => {
-        dispatch(fetchRepositories());
+        dispatch(fetchRepositories())
     }, [dispatch]);
 
-    const toggleDarkMode = () => {
-        setIsDarkMode(!isDarkMode);
-    };
-
-
+    // const toggleDarkMode = () => {
+    //     setIsDarkMode(!isDarkMode);
+    // };
 
     return (
-        <body className={`App ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
             <div className="container">
-                {/* <h1>Github Clone</h1> */}
                 {Array.isArray(repositories) && repositories.length > 0 ? (
-                    repositories.map((repo) => (
+                    repositories.map((repo: any) => (
                         <div key={repo.id} className="repo-card">
                             <div className='card-info'>
                                 <div className='stars-repo'>
@@ -70,18 +65,14 @@ const ListingPage = () => {
                                 </div>
                             </div>
                         </div>
-
                     ))
                 ) : (
                     <div style={{ "height": "82.35vh", "display": "flex", "justifyContent": "center", alignItems: "center" }}>
                         {/* <p >No repositories to display.</p> */}
-                        <img src="https://th.bing.com/th/id/R.bef9749a5d0fd6999aea4bb8f61e3594?rik=lyBRuOCZw38O3Q&riu=http%3a%2f%2forig14.deviantart.net%2f00af%2ff%2f2013%2f094%2ff%2f4%2floading_gif_by_zegerdon-d60eb1v.png&ehk=AzeYe6MyxpzPHdQJKySAkNmbM9Nk2U3oVC54BBkHHwM%3d&risl=&pid=ImgRaw&r=0" alt="" width={"305rem"} height={"305rem"} />
-                        {/* <video autoplay loop muted width="500" height="300" src="https://th.bing.com/th/id/R.bef9749a5d0fd6999aea4bb8f61e3594?rik=lyBRuOCZw38O3Q&riu=http%3a%2f%2forig14.deviantart.net%2f00af%2ff%2f2013%2f094%2ff%2f4%2floading_gif_by_zegerdon-d60eb1v.png&ehk=AzeYe6MyxpzPHdQJKySAkNmbM9Nk2U3oVC54BBkHHwM%3d&risl=&pid=ImgRaw&r=0">
-                        </video> */}
+                        <Ping size={400} speed={2} color="#415A77" />
                     </div>
                 )}
             </div>
-        </body>
     );
 };
 

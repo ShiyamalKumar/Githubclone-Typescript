@@ -1,18 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import Readme from './Readme';
+import Readme from '../components/Readme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
-import '../src/styles/Details.css';
-import ReactMarkdown from 'react-markdown'
+import '../styles/Details.css';
 
-const Details = () => {
-    const { repoId } = useParams();
-    const [repoDetails, setRepoDetails] = useState(null);
+
+interface RepoDetails {
+    name: string;
+    description: string | null;
+    owner: {
+        login: string;
+    };
+    stargazers_count: number;
+    forks_count: number;
+    languages: {
+        [key: string]: number;
+    } | null;
+    html_url: string;
+}
+
+const Details: React.FC = () => {
+    const { repoId } = useParams<{ repoId: string }>();
+    const [repoDetails, setRepoDetails] = useState<RepoDetails | null>(null);
 
     useEffect(() => {
-        // Fetch repository details based on repoId
         axios
             .get(`https://api.github.com/repositories/${repoId}`)
             .then((response) => {
@@ -27,7 +40,6 @@ const Details = () => {
         return <div>Loading...</div>;
     }
 
-    // Check if repoDetails.languages exists before using Object.keys
     const languages = repoDetails.languages
         ? Object.keys(repoDetails.languages).join(', ')
         : 'Not specified';
@@ -44,8 +56,6 @@ const Details = () => {
                         <p>
                             <FontAwesomeIcon icon={faStar} /> Stars: {repoDetails.stargazers_count}
                         </p>
-
-
                         <p>
                             <FontAwesomeIcon icon={faCodeBranch} /> Forks: {repoDetails.forks_count}
                         </p>
