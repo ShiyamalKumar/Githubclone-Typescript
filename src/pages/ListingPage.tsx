@@ -1,5 +1,5 @@
 import React, { Dispatch, useEffect, useState } from 'react';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import {  useDispatch, useSelector } from 'react-redux';
 import { fetchRepositories } from '../redux/actions';
 import '../styles/ListingPage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -30,8 +30,9 @@ const getLanguageClass = (language: string | null) => {
 const ListingPage: React.FC = () => {
     // const useAppDispatch: () => AppDispatch = useDispatch
     const dispatch: Dispatch<any> = useDispatch();
-    const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
-    const { repositories, error, user } = useAppSelector((state: any) => state);
+    const { repositories } = useSelector(
+      (state: RootState) => state.repositories
+    );
     const [isDarkMode, setIsDarkMode] = useState(false);
 
 

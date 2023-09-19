@@ -1,21 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit';
-import repositoriesReducer, { Action, RepositoriesState }  from './reducers';
-import { createStore, Store, applyMiddleware } from "redux"
-import thunk from 'redux-thunk'
+import { configureStore ,combineReducers} from '@reduxjs/toolkit';
+import repositoriesReducer from './reducers';
 
-
+const rootReducer=combineReducers({repositories:repositoriesReducer})
 
 const store = configureStore({
-    reducer:  repositoriesReducer,
+  reducer: rootReducer,
     
 });
-interface RootState {
+type RootState= {
   repositories: ReturnType<typeof store.getState>;
 }
 
-// const store: Store<RepositoriesState, Action> & {
-//     dispatch: RootState
-//   } = createStore(repositoriesReducer, applyMiddleware(thunk))
 
 export default store;
 export type { RootState };
