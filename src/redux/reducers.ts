@@ -1,3 +1,5 @@
+import { RepoDetails } from "../types";
+
 interface Repository {
     id: number;
     name: string;
@@ -13,6 +15,7 @@ export interface User
 }
 
 export interface RepositoriesState {
+    repoDetails: RepoDetails | undefined; 
     repositories: Repository[];
     error: string | null;
     user: User | null;
@@ -20,19 +23,21 @@ export interface RepositoriesState {
 }
 
 const initialState: RepositoriesState = {
+    repoDetails: undefined,
     repositories: [],
     error: null,
     user: null
 
 };
 
- enum ActionTypes {
+enum ActionTypes {
     FETCH_REPOSITORIES_SUCCESS = 'FETCH_REPOSITORIES_SUCCESS',
     FETCH_REPOSITORIES_FAILURE = 'FETCH_REPOSITORIES_FAILURE',
+
 }
 
-export type Action ={ type: ActionTypes.FETCH_REPOSITORIES_SUCCESS; payload: Repository[] }
-    | { type: ActionTypes.FETCH_REPOSITORIES_FAILURE; payload: string };
+export type Action ={ type: ActionTypes.FETCH_REPOSITORIES_SUCCESS; payload: Repository[] } |
+    { type: ActionTypes.FETCH_REPOSITORIES_FAILURE; payload: string };
 
 const repositoriesReducer = (state: RepositoriesState = initialState, action: Action): RepositoriesState => {
     switch (action.type) {

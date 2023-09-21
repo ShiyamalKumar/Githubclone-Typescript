@@ -1,40 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Readme from '../components/Readme';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRepository } from '../redux/actions'; 
+import { AppDispatch, RootState } from '../redux/store';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
+import Readme from '../components/Readme';
 import '../styles/Details.css';
 
-
-interface RepoDetails {
-    name: string;
-    description: string | null;
-    owner: {
-        login: string;
-    };
-    stargazers_count: number;
-    forks_count: number;
-    languages: {
-        [key: string]: number;
-    } | null;
-    html_url: string;
-}
-
 const Details: React.FC = () => {
-    const { repoId } = useParams<{ repoId: string }>();
-    const [repoDetails, setRepoDetails] = useState<RepoDetails | null>(null);
+    const { repoId } = useParams<{ repoId: string | undefined }>();
+    const dispatch = useDispatch<AppDispatch>();
+    const { repositories2 } = useSelector((state: RootState) => state);
+    console.log("repositories", useSelector((state: RootState) => state))
+    const { repoDetails, error } = repositories2; 
 
     useEffect(() => {
-        axios
-            .get(`https://api.github.com/repositories/${repoId}`)
-            .then((response) => {
-                setRepoDetails(response.data);
-            })
-            .catch((error) => {
-                console.error('Error fetching repo details:', error);
-            });
-    }, [repoId]);
+        if (repoId) {
+            dispatch(fetchRepository(repoId));
+        }
+    }, [dispatch, repoId]);
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     if (!repoDetails) {
         return <div>Loading...</div>;

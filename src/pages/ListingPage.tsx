@@ -29,9 +29,13 @@ const getLanguageClass = (language: string | null) => {
 
 const ListingPage: React.FC = () => {
     // const useAppDispatch: () => AppDispatch = useDispatch
+       // const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+    // const { repositories, error, user } = useAppSelector((state: any) => state);
     const dispatch: Dispatch<any> = useDispatch();
-    const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
-    const { repositories, error, user } = useAppSelector((state: any) => state);
+ 
+    const { repositories } = useSelector(
+        (state: RootState) => state.repositories
+      );
     const [isDarkMode, setIsDarkMode] = useState(false);
 
 

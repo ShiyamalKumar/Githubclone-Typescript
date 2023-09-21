@@ -7,7 +7,8 @@ import { RootState } from '../redux/store.js';
 
 interface NavbarProps { }
 
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar: React.FC<NavbarProps>=() => {
+
     const { user } = useSelector((state: RootState) => state.repositories);
 
     return (
